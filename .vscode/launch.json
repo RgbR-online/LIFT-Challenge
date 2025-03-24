@@ -1,19 +1,14 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-      {
-          "label": "Build (Makefile)", 
-          "type": "shell",
-          "command": "make",  
-          "args": [],  
-          "group": {
-              "kind": "build",
-              "isDefault": true
-          },
-          "problemMatcher": []
-      }
-],
-"configurations": [
-
-]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Serial Script",  // Nom de la configuration
+            "type": "node",  // Utilise "node" pour exécuter des scripts shell ou node.js
+            "request": "launch",
+            "preLaunchTask": "Build (Makefile)",  // Appelle la tâche définie dans tasks.json
+            "program": "${workspaceFolder}/serial.sh",  // Ce n'est plus nécessaire ici car on utilise une tâche
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
 }
