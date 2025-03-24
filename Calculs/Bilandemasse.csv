@@ -1,0 +1,10 @@
+label,Masse (kg),masse volumique (kg/m3),Volume (m3),nombre
+envellope,2,calc,7.06868380863,1
+gaz,calc,0.1785,7.06868380863,1
+moteurs,0.02,None,None,8
+controlleurs,0.03,None,None,8
+carte electroniques,0.019,None,None,2
+cables,0.027,None,None,1
+systeme mecanique,0.03,None,None,1
+charge,0.2,calc,0.3,1
+ballast,calc,1,calc,1
