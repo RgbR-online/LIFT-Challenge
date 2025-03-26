@@ -40,15 +40,15 @@ bfs::SbusData dataProTronik;
 #define ledPinVerte 40
 #define ledPinRouge 41
 
-#define ventouse1Mag1 8
-#define ventouse1Mag2 9
-#define ventouse2Mag1 10
-#define ventouse2Mag2 11
+#define ventouse1Mag1 14
+//#define ventouse1Mag2 9
+#define ventouse2Mag1 15
+//#define ventouse2Mag2 11
 
-#define pinPompeBallastTangage1 5
-#define pinPompeBallastTangage2 6
-#define pinPompeBallastRoulis1 7
-#define pinPompeBallastRoulis2 8
+#define pinPompeBallastTangage1 10
+#define pinPompeBallastTangage2 11
+#define pinPompeBallastRoulis1 12
+#define pinPompeBallastRoulis2 13
 
 
 #define pinServoNacelle1 22

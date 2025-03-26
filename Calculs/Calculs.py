@@ -9,7 +9,7 @@ avogadroConstant = 6.02214076e23
 gazParfaitsConstant = 8.31446261815324
 gravityConstant = 9.81
 
-FichierBilanMasse = "Bilandemasse.csv"
+FichierBilanMasse = "Calculs/Bilandemasse.csv"
 masseTotale = 0 #kg
 
 temperatureAmbiante = 20 #°C
@@ -31,7 +31,7 @@ with open(FichierBilanMasse, newline="", encoding="utf-8") as fichier:
     
     for ligne in bilanMasse:
         for labels in ligne.keys() :
-            if ligne[labels] == "None" or labels == "label" or ligne["label"] == "ballast" :
+            if ligne[labels] == "None" or labels == "label" or ligne["label"] == "ballast" or  ligne[labels] == '' :
                 None
                 #print(ligne["label"])
             elif ligne[labels] == "calc" :
