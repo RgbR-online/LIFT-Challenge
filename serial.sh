@@ -1,1 +1,1 @@
-node readSerial.js
+node ./readSerial.js

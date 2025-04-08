@@ -40,15 +40,15 @@ bfs::SbusData dataProTronik;
 #define ledPinVerte 40
 #define ledPinRouge 41
 
-#define ventouse1Mag1 14
-//#define ventouse1Mag2 9
-#define ventouse2Mag1 15
-//#define ventouse2Mag2 11
+#define ventouse1Mag1 8
+#define ventouse1Mag2 9
+#define ventouse2Mag1 10
+#define ventouse2Mag2 11
 
-#define pinPompeBallastTangage1 10
-#define pinPompeBallastTangage2 11
-#define pinPompeBallastRoulis1 12
-#define pinPompeBallastRoulis2 13
+#define pinPompeBallastTangage1 5
+#define pinPompeBallastTangage2 6
+#define pinPompeBallastRoulis1 7
+#define pinPompeBallastRoulis2 8
 
 
 #define pinServoNacelle1 22
@@ -56,8 +56,8 @@ bfs::SbusData dataProTronik;
 Servo servoNacelle1;
 Servo servoNacelle2;
 
-#define pinServoEchangeBallast1 0
-#define pinServoEchangeBallast2 0
+#define pinServoEchangeBallast1 24
+#define pinServoEchangeBallast2 25
 Servo servoEchangeBallast1;
 Servo servoEchangeBallast2;
 
@@ -412,6 +412,7 @@ void setup() {
 
   init_PWM_ESC(errorFile);
 
+
   //receiver.setMinMax(minMax);
 
   sbus_rx_Futaba.Begin();
@@ -447,6 +448,13 @@ void loop() {
   
   control_ballasts (dataFutaba, dataProTronik);
 
+
+  //servoEchangeBallast1.write(0);
+  //delay(3000);
+  //servoEchangeBallast1.write(180);
+  //delay(3000);
+  //servoEchangeBallast1.write(90);
+  //delay(3000);
 
 
   //moteurs[0].writeMicroseconds(map(dataFutaba.ch[1], MIN_SBUS, MAX_SBUS, PWM_MIN, PWM_MAX));
