@@ -40,15 +40,15 @@ bfs::SbusData dataProTronik;
 #define ledPinVerte 40
 #define ledPinRouge 41
 
-#define ventouse1Mag1 8
-#define ventouse1Mag2 9
-#define ventouse2Mag1 10
-#define ventouse2Mag2 11
+#define ventouse1Mag1 14
+//#define ventouse1Mag2 
+#define ventouse2Mag1 15
+//#define ventouse2Mag2 11
 
-#define pinPompeBallastTangage1 5
-#define pinPompeBallastTangage2 6
-#define pinPompeBallastRoulis1 7
-#define pinPompeBallastRoulis2 8
+#define pinPompeBallastTangage1 10
+#define pinPompeBallastTangage2 11
+#define pinPompeBallastRoulis1 12
+#define pinPompeBallastRoulis2 13
 
 
 #define pinServoNacelle1 22
@@ -64,7 +64,7 @@ Servo servoEchangeBallast2;
 
 Servo moteurs[8];
 const unsigned int pin_moteurs[8] = { 2, 3, 4, 5, 6, 7, 8, 9 };
-int commandeMoteurs[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+float commandeMoteurs[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 float commandes[6] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 float commandeAxes[6] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
@@ -183,10 +183,13 @@ File OpenFile(const char* fichier) {
 ///////////////////////////////////////////////////////////
 // SBUS
 ///////////////////////////////////////////////////////////
-void read_SBUS(bfs::SbusRx sbus_rx, bfs::SbusData* data) {
-  if (sbus_rx.Read()) {
+bfs::SbusData read_SBUS(bfs::SbusRx* sbus_rx) {
+  if ((*sbus_rx).Read()) {
     /* Grab the received data */
-    *data = sbus_rx.data();
+
+    return (*sbus_rx).data();
+
+    
 
     /* Set the SBUS TX data to the received data */
     //sbus_tx.data(data);
@@ -391,9 +394,9 @@ void setup() {
   pinMode(ledPinVerte, OUTPUT);
   pinMode(ledPinRouge, OUTPUT);
   pinMode(ventouse1Mag1, OUTPUT);
-  pinMode(ventouse1Mag2, OUTPUT);
+  //pinMode(ventouse1Mag2, OUTPUT);
   pinMode(ventouse2Mag1, OUTPUT);
-  pinMode(ventouse2Mag2, OUTPUT);
+  //pinMode(ventouse2Mag2, OUTPUT);
 
   /////////////////////////////
   // INPUT
@@ -436,10 +439,10 @@ void loop() {
 
   updateDt();
 
-  read_SBUS(sbus_rx_Futaba, &dataFutaba);
+  dataFutaba = read_SBUS(&sbus_rx_Futaba);
   //print_SBUS_data(dataFutaba);
 
-  read_SBUS(sbus_rx_ProTronik, &dataProTronik);
+  dataProTronik = read_SBUS(&sbus_rx_ProTronik);
   //print_SBUS_data(dataProTronik);
 
   boucle_moteur (errorFile, dataFutaba, dataProTronik);
